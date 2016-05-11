@@ -27,4 +27,9 @@ class ClienteService
 
         return $result;
     }
+
+    public function fetchAll()
+    {
+        return $this->clienteMapper->fetchAll();
+    }
 }

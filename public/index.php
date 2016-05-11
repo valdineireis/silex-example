@@ -28,6 +28,14 @@ $app->get("/ola/{nome}", function($nome) use ($app) {
 
 });
 
+$app->get("/clientes", function() use ($app) {
+
+    $dados = $app['clienteService']->fetchAll();
+
+    return $app['twig']->render('clientes.twig', ['clientes'=>$dados]);
+
+});
+
 $app->get("/cliente", function() use ($app) {
 
     $data['nome'] = "Cliente";
