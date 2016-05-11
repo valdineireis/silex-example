@@ -22,9 +22,9 @@ $app->get("/", function() use ($app) {
 
 });
 
-$app->get("/ola/{nome}", function($nome) {
+$app->get("/ola/{nome}", function($nome) use ($app) {
 
-    return "Ola {$nome}";
+    return $app['twig']->render('ola.twig', ['nome'=>$nome]);
 
 });
 
