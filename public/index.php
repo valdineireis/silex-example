@@ -2,13 +2,9 @@
 
 require_once __DIR__.'/../bootstrap.php';
 
-use Symfony\Component\HttpFoundation\Response;
-
 use Code\Sistema\Service\ClienteService;
 use Code\Sistema\Entity\Cliente;
 use Code\Sistema\Mapper\ClienteMapper;
-
-$response = new Response();
 
 $app['clienteService'] = function() {
 
@@ -20,10 +16,9 @@ $app['clienteService'] = function() {
 
 };
 
-$app->get("/", function() use ($response) {
+$app->get("/", function() use ($app) {
 
-    $response->setContent("Ola mundo!");
-    return $response;
+    return $app['twig']->render('index.twig', []);
 
 });
 
