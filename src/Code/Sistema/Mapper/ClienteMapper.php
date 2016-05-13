@@ -6,6 +6,19 @@ use Code\Sistema\Entity\Cliente;
 
 class ClienteMapper
 {
+    private $dados = [
+        0 => [
+            'id' => 0,
+            'nome' => 'Cliente xpto',
+            'email' => 'email@cliente_xpto.com'
+        ],
+        1 => [
+            'id' => 1,
+            'nome' => 'Cliente 01',
+            'email' => 'email@cliente01.com'
+        ]
+    ];
+
     public function insert(Cliente $cliente)
     {
         return [
@@ -14,14 +27,13 @@ class ClienteMapper
         ];
     }
 
+    public function find($id)
+    {
+        return $this->dados[$id];
+    }
+
     public function fetchAll()
     {
-        $dados[0]['nome'] = "Cliente 01";
-        $dados[0]['email'] = "email@cliente01.com";
-
-        $dados[1]['nome'] = "Cliente 02";
-        $dados[1]['email'] = "email@cliente02.com";
-
-        return $dados;
+        return $this->dados;
     }
 }

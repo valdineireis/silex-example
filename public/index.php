@@ -29,6 +29,13 @@ $app->get("/api/clientes", function() use ($app) {
 
 });
 
+$app->get("/api/clientes/{id}", function($id) use ($app) {
+
+    $dados = $app['clienteService']->find($id);
+    return $app->json($dados);
+
+});
+
 $app->get("/", function() use ($app) {
 
     return $app['twig']->render('index.twig', []);

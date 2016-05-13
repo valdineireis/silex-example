@@ -32,4 +32,9 @@ class ClienteService
     {
         return $this->clienteMapper->fetchAll();
     }
+
+    public function find($id)
+    {
+        return $this->clienteMapper->find($id);
+    }
 }
