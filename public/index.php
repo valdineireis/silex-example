@@ -6,6 +6,8 @@ use Code\Sistema\Service\ClienteService;
 use Code\Sistema\Entity\Cliente;
 use Code\Sistema\Mapper\ClienteMapper;
 
+use Symfony\Component\HttpFoundation\Request;
+
 $app['clienteService'] = function() {
 
     $clienteEntity = new Cliente();
@@ -33,6 +35,17 @@ $app->get("/api/clientes/{id}", function($id) use ($app) {
 
     $dados = $app['clienteService']->find($id);
     return $app->json($dados);
+
+});
+
+$app->post("/api/clientes", function(Request $request) use ($app) {
+
+    $dados['nome'] = $request->get('nome');
+    $dados['email'] = $request->get('email');
+
+    $result = $app['clienteService']->insert($dados);
+
+    return $app->json($result);
 
 });
 
