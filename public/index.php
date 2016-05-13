@@ -16,6 +16,19 @@ $app['clienteService'] = function() {
 
 };
 
+// GET  /api/clientes - Listar todos os clientes
+// GET  /api/clientes/1 - Listar apenas um cliente passando o ID por parâmetro
+// POST /api/clientes - Insere um novo cliente
+// PUT  /api/clientes/1
+// DELETE /api/clientes/1
+
+$app->get("/api/clientes", function() use ($app) {
+
+    $dados = $app['clienteService']->fetchAll();
+    return $app->json($dados);
+
+});
+
 $app->get("/", function() use ($app) {
 
     return $app['twig']->render('index.twig', []);
