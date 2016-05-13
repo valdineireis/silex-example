@@ -33,6 +33,11 @@ class ClienteService
         return $this->clienteMapper->fetchAll();
     }
 
+    public function update($id, array $array)
+    {
+        $this->clienteMapper->update($id, $array);
+    }
+
     public function find($id)
     {
         return $this->clienteMapper->find($id);

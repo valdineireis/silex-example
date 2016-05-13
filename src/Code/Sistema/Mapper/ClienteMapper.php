@@ -26,6 +26,13 @@ class ClienteMapper
         ];
     }
 
+    public function update($id, array $array)
+    {
+        return [
+            'success' => true
+        ];
+    }
+
     public function find($id)
     {
         return $this->dados[$id];

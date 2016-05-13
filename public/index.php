@@ -49,6 +49,16 @@ $app->post("/api/clientes", function(Request $request) use ($app) {
 
 });
 
+$app->put("/api/clientes/{id}", function($id, Request $request) use ($app) {
+
+    $data['nome'] = $request->get('nome');
+    $data['email'] = $request->get('email');
+
+    $dados = $app['clienteService']->update($id, $data);
+    return $app->json($dados);
+
+});
+
 $app->get("/", function() use ($app) {
 
     return $app['twig']->render('index.twig', []);
