@@ -25,6 +25,9 @@ $annotationDriver = new Doctrine\ORM\Mapping\Driver\AnnotationDriver(
     array(__DIR__ . DIRECTORY_SEPARATOR . 'src')
 );
 
+$driverChain = new Doctrine\ORM\Mapping\Driver\DriverChain();
+$driverChain->addDriver($annotationDriver, 'Code');
+
 $app = new \Silex\Application();
 $app['debug'] = true;
 
