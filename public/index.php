@@ -9,11 +9,7 @@ use Code\Sistema\Mapper\ClienteMapper;
 use Symfony\Component\HttpFoundation\Request;
 
 $app['clienteService'] = function() use ($em) {
-
-    $clienteEntity = new Cliente();
-    $clienteMapper = new ClienteMapper($em);
-
-    $clienteService = new ClienteService($clienteEntity, $clienteMapper);
+    $clienteService = new ClienteService($em);
     return $clienteService;
 
 };
