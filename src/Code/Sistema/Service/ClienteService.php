@@ -55,6 +55,8 @@ class ClienteService
     
     public function delete($id) 
     {
-
+        $cliente = $this->em->getReference("Code\Sistema\Entity\Cliente", $id);
+        $this->em->remove($cliente);
+        return true;
     }
 }
