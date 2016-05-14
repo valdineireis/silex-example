@@ -49,7 +49,8 @@ class ClienteService
 
     public function find($id)
     {
-
+        $repository = $this->em->getRepository("Code\Sistema\Entity\Cliente");
+        return $repository->find($id);
     }
     
     public function delete($id) 
