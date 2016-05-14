@@ -1,0 +1,15 @@
+Comandos do Doctrine
+
+No diretório que se encontra o arquivo cli-config.php, normalmente em bin/ podemos executar os seguintes comandos no console.
+
+Visualizar os comandos disponíveis
+php doctrine
+
+Visualizar as informações das entidades (validar se tudo está correto)
+php doctrine orm:info
+
+Criar as tabelas no banco de dados com base nas entidades mapeadas
+php doctrine orm:schema-tool:create
+
+Para visualizar o sql gerado
+php doctrine orm:schema-tool:create --dump-sql
