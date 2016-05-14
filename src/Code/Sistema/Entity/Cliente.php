@@ -2,39 +2,51 @@
 
 namespace Code\Sistema\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="clientes")
+ */
 class Cliente
 {
-    private $nome;
-    private $email;
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue
+     */
+    private $id;
 
     /**
-     * @return mixed
+     * @ORM\Column(type="string", length=255)
      */
+    private $nome;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $email;
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
     public function getNome()
     {
         return $this->nome;
     }
 
-    /**
-     * @param mixed $nome
-     */
     public function setNome($nome)
     {
         $this->nome = $nome;
     }
 
-    /**
-     * @return mixed
-     */
     public function getEmail()
     {
         return $this->email;
     }
 
-    /**
-     * @param mixed $email
-     */
     public function setEmail($email)
     {
         $this->email = $email;
