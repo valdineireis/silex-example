@@ -12,6 +12,14 @@ use Doctrine\ORM\Tools\Setup,
     Doctrine\Common\Annotations\AnnotationReader,
     Doctrine\Common\ClassLoader;
 
+$cache = new Doctrine\Common\Cache\ArrayCache();
+$annotationReader = new Doctrine\Common\Annotations\AnnotationReader();
+
+$cachedAnnotationReader = new Doctrine\Common\Annotations\CachedReader(
+    $annotationReader, // use reader
+    $cache // and a cache driver
+);
+
 $app = new \Silex\Application();
 $app['debug'] = true;
 
