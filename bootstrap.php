@@ -38,6 +38,8 @@ $config->setMetadataDriverImpl($driverChain);
 $config->setMetadataCacheImpl($cache);
 $config->setQueryCacheImpl($cache);
 
+AnnotationRegistry::registerFile(__DIR__ . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'doctrine' . DIRECTORY_SEPARATOR . 'orm' . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . 'Doctrine' . DIRECTORY_SEPARATOR . 'ORM' . DIRECTORY_SEPARATOR . 'Mapping' . DIRECTORY_SEPARATOR . 'Driver' . DIRECTORY_SEPARATOR . 'DoctrineAnnotations.php');
+
 $app = new \Silex\Application();
 $app['debug'] = true;
 
