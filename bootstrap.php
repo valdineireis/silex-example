@@ -20,6 +20,11 @@ $cachedAnnotationReader = new Doctrine\Common\Annotations\CachedReader(
     $cache // and a cache driver
 );
 
+$annotationDriver = new Doctrine\ORM\Mapping\Driver\AnnotationDriver(
+    $cachedAnnotationReader, // our cached annotation reader
+    array(__DIR__ . DIRECTORY_SEPARATOR . 'src')
+);
+
 $app = new \Silex\Application();
 $app['debug'] = true;
 
