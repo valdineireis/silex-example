@@ -28,7 +28,10 @@ class ClienteService
 
     public function fetchAll()
     {
+        $repository = $this->em->getRepository("Code\Sistema\Entity\Cliente");
+        $result = $repository->findAll();
 
+        return $result;
     }
 
     public function update($id, array $array)
