@@ -40,6 +40,20 @@ $config->setQueryCacheImpl($cache);
 
 AnnotationRegistry::registerFile(__DIR__ . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'doctrine' . DIRECTORY_SEPARATOR . 'orm' . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . 'Doctrine' . DIRECTORY_SEPARATOR . 'ORM' . DIRECTORY_SEPARATOR . 'Mapping' . DIRECTORY_SEPARATOR . 'Driver' . DIRECTORY_SEPARATOR . 'DoctrineAnnotations.php');
 
+$evm = new Doctrine\Common\EventManager();
+$em = EntityManager::create(
+    array(
+        'driver'   => 'pdo_mysql',
+        'host'     => 'localhost',
+        'port'     => '3306',
+        'user'     => 'root',
+        'password' => '',
+        'dbname'   => 'exemplo_doctrine',
+    ),
+    $config,
+    $evm
+);
+
 $app = new \Silex\Application();
 $app['debug'] = true;
 
