@@ -2,51 +2,47 @@
 
 namespace Code\Sistema\Service;
 
-use Code\Sistema\Entity\Cliente;
-use Code\Sistema\Mapper\ClienteMapper;
+use Code\Sistema\Entity\Cliente as ClienteEntity;
+use Doctrine\ORM\EntityManager;
 
 class ClienteService
 {
-    private $cliente;
-    private $clienteMapper;
+    private $em;
 
-    public function __construct(Cliente $cliente, ClienteMapper $clienteMapper)
+    public function __construct(EntityManager $em)
     {
-        $this->cliente = $cliente;
-        $this->clienteMapper = $clienteMapper;
+        $this->em = $em;
     }
 
     public function insert(array $data)
     {
-        $clienteEntity = $this->cliente;
+        $clienteEntity = new ClienteEntity();
         $clienteEntity->setNome($data['nome']);
         $clienteEntity->setEmail($data['email']);
 
-        $mapper = $this->clienteMapper;
-        $result = $mapper->insert($clienteEntity);
+        $this->em->persist($clienteEntity);
+        $this->em->flush();
 
-        return $result;
+        return $clienteEntity;
     }
 
     public function fetchAll()
     {
-        return $this->clienteMapper->fetchAll();
+
     }
 
     public function update($id, array $array)
     {
-        $this->clienteMapper->update($id, $array);
+
     }
 
     public function find($id)
     {
-        return $this->clienteMapper->find($id);
+
     }
     
     public function delete($id) 
     {
-        return [
-            'success' => true
-        ];
+        
     }
 }
