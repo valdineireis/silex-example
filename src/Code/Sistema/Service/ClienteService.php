@@ -33,7 +33,15 @@ class ClienteService
 
     public function update($id, array $array)
     {
+        $cliente = $this->em->getReference("Code\Sistema\Entity\Cliente", $id);
 
+        $cliente->setNome($array['nome']);
+        $cliente->setEmail($array['email']);
+
+        $this->em->persist($cliente);
+        $this->em->flush();
+
+        return $cliente;
     }
 
     public function find($id)
@@ -43,6 +51,6 @@ class ClienteService
     
     public function delete($id) 
     {
-        
+
     }
 }
