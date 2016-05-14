@@ -3,8 +3,6 @@
 require_once __DIR__.'/../bootstrap.php';
 
 use Code\Sistema\Service\ClienteService;
-use Code\Sistema\Entity\Cliente;
-use Code\Sistema\Mapper\ClienteMapper;
 
 use Symfony\Component\HttpFoundation\Request;
 
