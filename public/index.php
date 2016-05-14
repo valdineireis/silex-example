@@ -59,6 +59,14 @@ $app->put("/api/clientes/{id}", function($id, Request $request) use ($app) {
 
 });
 
+$app->delete("/api/clientes/{id}", function($id) use ($app) {
+
+    $dados = $app['clienteService']->delete($id);
+    return $app->json($dados);
+
+});
+
+
 $app->get("/", function() use ($app) {
 
     return $app['twig']->render('index.twig', []);

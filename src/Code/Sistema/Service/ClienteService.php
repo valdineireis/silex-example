@@ -42,4 +42,11 @@ class ClienteService
     {
         return $this->clienteMapper->find($id);
     }
+    
+    public function delete($id) 
+    {
+        return [
+            'success' => true
+        ];
+    }
 }

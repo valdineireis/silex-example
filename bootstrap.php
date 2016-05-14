@@ -2,6 +2,16 @@
 
 require_once 'vendor/autoload.php';
 
+use Doctrine\ORM\Tools\Setup,
+    Doctrine\ORM\EntityManager,
+    Doctrine\Common\EventManager as EventManager,
+    Doctrine\ORM\Events,
+    Doctrine\ORM\Configuration,
+    Doctrine\Common\Cache\ArrayCache as Cache,
+    Doctrine\Common\Annotations\AnnotationRegistry,
+    Doctrine\Common\Annotations\AnnotationReader,
+    Doctrine\Common\ClassLoader;
+
 $app = new \Silex\Application();
 $app['debug'] = true;
 
