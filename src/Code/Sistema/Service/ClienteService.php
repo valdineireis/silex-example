@@ -29,7 +29,7 @@ class ClienteService
     public function fetchAll()
     {
         $repository = $this->em->getRepository("Code\Sistema\Entity\Cliente");
-        $result = $repository->findAll();
+        $result = $repository->getClientesOrdenados();
 
         return $result;
     }
