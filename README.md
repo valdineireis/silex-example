@@ -1,1 +1,1 @@
-# silex-example
+# Example com Silex e Doctrine
