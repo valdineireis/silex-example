@@ -28,6 +28,16 @@ $annotationDriver = new Doctrine\ORM\Mapping\Driver\AnnotationDriver(
 $driverChain = new Doctrine\ORM\Mapping\Driver\DriverChain();
 $driverChain->addDriver($annotationDriver, 'Code');
 
+$config = new Doctrine\ORM\Configuration();
+$config->setProxyDir('/tmp');
+$config->setProxyNamespace('Proxy');
+$config->setAutoGenerateProxyClasses(true); // this can be based on production configuration
+// register metadata driver
+$config->setMetadataDriverImpl($driverChain);
+// use our allready initialized cache driver
+$config->setMetadataCacheImpl($cache);
+$config->setQueryCacheImpl($cache);
+
 $app = new \Silex\Application();
 $app['debug'] = true;
 
