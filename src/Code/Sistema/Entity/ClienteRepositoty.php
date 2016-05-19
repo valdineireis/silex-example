@@ -14,4 +14,15 @@ class ClienteRepositoty extends EntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function getClientesDesc()
+    {
+        $dql = "SELECT c FROM Code\Sistema\Entity\Cliente c ORDER BY c.nome DESC";
+
+        return $this
+            ->getEntityManager()
+            ->createQuery($dql)
+            ->getResult()
+        ;
+    }
 }
