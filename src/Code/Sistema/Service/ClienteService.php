@@ -50,6 +50,10 @@ class ClienteService
     public function find($id)
     {
         $repository = $this->em->getRepository("Code\Sistema\Entity\Cliente");
+
+        $ex = $repository->findBy(array('nome'=>'Valdinei', 'email'=>'teste@mail.com'));
+        //$ex = $repository->findByNome('Valdinei');
+
         return $repository->find($id);
     }
     
