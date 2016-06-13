@@ -3,6 +3,7 @@
 namespace Code\Sistema\Service;
 
 use Code\Sistema\Entity\Cliente as ClienteEntity;
+use Code\Sistema\Entity\ClienteProfile as ClienteProfile;
 use Doctrine\ORM\EntityManager;
 
 class ClienteService
@@ -19,6 +20,16 @@ class ClienteService
         $clienteEntity = new ClienteEntity();
         $clienteEntity->setNome($data['nome']);
         $clienteEntity->setEmail($data['email']);
+
+        if (isset($data['rg']) and isset($data['cpf'])) {
+            $clienteProfile = new ClienteProfile();
+            $clienteProfile->setCpf($data['cpf']);
+            $clienteProfile->setRg($data['rg']);
+            $this->em->persist($clienteProfile);
+
+            // faz o relacionamento
+            $clienteEntity->setProfile($clienteProfile);
+        }
 
         $this->em->persist($clienteEntity);
         $this->em->flush();
