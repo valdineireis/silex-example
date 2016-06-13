@@ -41,7 +41,13 @@ $app->post("/api/clientes", function(Request $request) use ($app) {
 
     $result = $app['clienteService']->insert($dados);
 
-    return $app->json($result);
+    $data['id'] = $result->getId();
+    $data['nome'] = $result->getNome();
+    $data['email'] = $result->getEmail();
+    $data['rg'] = $result->getProfile()->getRg();
+    $data['cpf'] = $result->getProfile()->getCpf();
+
+    return $app->json($data);
 
 });
 
