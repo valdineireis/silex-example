@@ -21,3 +21,7 @@ Testando as DQLs
 Dentro da pasta bin\
 php doctrine orm:run-dql "select c Code\Sistema\Entity\Cliente c"
 php doctrine dbal:run-dql "select * from clientes"
+
+Link para a documentação do Doctrine para os mapeamentos
+Association Mapping
+http://doctrine-orm.readthedocs.io/projects/doctrine-orm/en/latest/reference/association-mapping.html
