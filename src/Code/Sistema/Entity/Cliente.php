@@ -27,6 +27,28 @@ class Cliente
      */
     private $email;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Code\Sistema\Entity\ClienteProfile")
+     * @ORM\JoinColumn(name="cliente_profile", referencedColumnName="id")
+     */
+    private $profile;
+
+    /**
+     * @return mixed
+     */
+    public function getProfile()
+    {
+        return $this->profile;
+    }
+
+    /**
+     * @param mixed $profile
+     */
+    public function setProfile($profile)
+    {
+        $this->profile = $profile;
+    }
+
     public function getId()
     {
         return $this->id;

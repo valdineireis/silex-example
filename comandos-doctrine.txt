@@ -14,6 +14,9 @@ php doctrine orm:schema-tool:create
 Para visualizar o sql gerado
 php doctrine orm:schema-tool:create --dump-sql
 
+Atualizando os relacionamentos
+php doctrine orm:schema-tool:update --force
+
 Testando as DQLs
 Dentro da pasta bin\
 php doctrine orm:run-dql "select c Code\Sistema\Entity\Cliente c"
