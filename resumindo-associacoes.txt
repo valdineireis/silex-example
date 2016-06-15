@@ -1,0 +1,34 @@
+Resumindo Associações
+
+Como você pode perceber, trabalhamos com a base de 3 Associações:
+
+OneToOne
+OneToMany
+ManyToMany
+
+O grande ponto é que todas essas associações podem se tornar bilaterais, ou seja,
+podemos pegar as informações através de quaisquer tabelas, desde que estejam mapeadas.
+
+Ex: Uma vez que clientes possuem interesses, podemos pegar acessar todos interesses de um determinado cliente,
+todavia, também podemos fazer um pequeno mapeamento que possa nos trazer todos os clientes relacionado com um
+determinado interesse por exemplo, etc.
+
+Para resumir os mapeamentos, fique ligado apenas nos campos que você precisará substituir:
+
+/**
+ * @ORM\OneToOne(targetEntity="Code\Sistema\Entity\Cliente\Profile")
+ * @ORM\JoinColumn(name="cliente_profile", referencedColumnName="id")
+ */
+
+/**
+ * @ORM\ManyToOne(targetEntity="Code\Sistema\Entity\Cupom")
+ * @ORM\JoinColumn(name="cupom_id", referencedColumnName="id")
+ */
+
+/**
+ * @ORM\ManyToMany(targetEntity="Code\Sistema\Entity\Interesse")
+ * @ORM\JoinTable(name="clientes_interesses",
+ *      joinColumns={@ORM\JoinColumn(name="cliente_id", referencedColumnName="id")},
+ *      inverseJoinColumns={@ORM\JoinColumn(name="interesse_id", referencedColumnName="id")}
+ *      )
+ */
