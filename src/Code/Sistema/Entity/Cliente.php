@@ -34,6 +34,28 @@ class Cliente
     private $profile;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Code\Sistema\Entity\Cupom")
+     * @ORM\JoinColumn(name="cupom_id", referencedColumnName="id")
+     */
+    private $cupom;
+
+    /**
+     * @return mixed
+     */
+    public function getCupom()
+    {
+        return $this->cupom;
+    }
+
+    /**
+     * @param mixed $cupom
+     */
+    public function setCupom($cupom)
+    {
+        $this->cupom = $cupom;
+    }
+
+    /**
      * @return mixed
      */
     public function getProfile()
