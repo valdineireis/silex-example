@@ -3,12 +3,19 @@
 require_once __DIR__.'/../bootstrap.php';
 
 use Code\Sistema\Service\ClienteService;
+use Code\Sistema\Service\InteresseService;
 
 use Symfony\Component\HttpFoundation\Request;
 
 $app['clienteService'] = function() use ($em) {
     $clienteService = new ClienteService($em);
     return $clienteService;
+
+};
+
+$app['interesseService'] = function() use ($em) {
+    $interesseService = new InteresseService($em);
+    return $interesseService;
 
 };
 
@@ -46,6 +53,19 @@ $app->post("/api/clientes", function(Request $request) use ($app) {
     $data['email'] = $result->getEmail();
     $data['rg'] = $result->getProfile()->getRg();
     $data['cpf'] = $result->getProfile()->getCpf();
+
+    return $app->json($data);
+
+});
+
+$app->post("/api/interesses", function(Request $request) use ($app) {
+
+    $dados['nome'] = $request->get('nome');
+
+    $result = $app['interesseService']->insert($dados);
+
+    $data['id'] = $result->getId();
+    $data['nome'] = $result->getNome();
 
     return $app->json($data);
 
