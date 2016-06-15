@@ -40,6 +40,15 @@ class Cliente
     private $cupom;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Code\Sistema\Entity\Interesse")
+     * @ORM\JoinTable(name="clientes_interesses",
+     *     joinColumns={@ORM\JoinColumn(name="cliente_id", referencedColumnName="id")}
+     *     inverseJoinColumns={@ORM\JoinColumn(name="interesse_id", referencedColumnName="id")}
+     *     )
+     */
+    private $interesses;
+
+    /**
      * @return mixed
      */
     public function getCupom()
