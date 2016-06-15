@@ -2,6 +2,7 @@
 
 namespace Code\Sistema\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -42,11 +43,32 @@ class Cliente
     /**
      * @ORM\ManyToMany(targetEntity="Code\Sistema\Entity\Interesse")
      * @ORM\JoinTable(name="clientes_interesses",
-     *     joinColumns={@ORM\JoinColumn(name="cliente_id", referencedColumnName="id")}
+     *     joinColumns={@ORM\JoinColumn(name="cliente_id", referencedColumnName="id")},
      *     inverseJoinColumns={@ORM\JoinColumn(name="interesse_id", referencedColumnName="id")}
      *     )
      */
     private $interesses;
+
+    public function __construct()
+    {
+        $this->interesses = new ArrayCollection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInteresses()
+    {
+        return $this->interesses;
+    }
+
+    /**
+     * @param mixed $interesses
+     */
+    public function addInteresse($interesse)
+    {
+        $this->interesses->add($interesse);
+    }
 
     /**
      * @return mixed
