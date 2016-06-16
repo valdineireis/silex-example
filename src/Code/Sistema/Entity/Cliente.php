@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="Code\Sistema\Entity\ClienteRepository")
+ * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="clientes")
  */
 class Cliente
@@ -49,9 +50,22 @@ class Cliente
      */
     private $interesses;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
     public function __construct()
     {
         $this->interesses = new ArrayCollection();
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setupDate()
+    {
+        $this->createdAt = new \DateTime();
     }
 
     /**
